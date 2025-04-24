@@ -41,9 +41,6 @@ top_monthly_df['Month Name'] = top_monthly_df['month'].dt.month_name()
 top_monthly_df['Month Num'] = top_monthly_df['month'].dt.month
 top_monthly_df = top_monthly_df.sort_values(['Month Num'])
 
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 plt.figure(figsize=(12, 6))
 sns.lineplot(
     data=top_monthly_df,
@@ -65,31 +62,8 @@ plt.show()
 
 
 
-"""
-# Ensure month column is datetime format
-top_monthly_df['month'] = pd.to_datetime(top_monthly_df['month'])
 
-# Add a readable month name column for seasonal trends
-top_monthly_df['Month Name'] = top_monthly_df['month'].dt.month_name()
-# Total revenue per month across all top products
-seasonal_trends = top_monthly_df.groupby('Month Name')['monthly_revenue'].sum()
 
-# Optional: reorder months for better chart visuals
-seasonal_trends = seasonal_trends.reindex([
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-])
-
-plt.figure(figsize=(10, 6))
-sns.barplot(x=seasonal_trends.index, y=seasonal_trends.values, palette="Blues_d")
-plt.title(' Seasonal Sales Trend (Top 5 Products)')
-plt.xlabel('Month')
-plt.ylabel('Revenue (INR)')
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
-
-"""
 
 
 
